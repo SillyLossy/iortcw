@@ -3676,12 +3676,12 @@ static void FS_Startup( const char *gameName )
 	}
 
 #ifndef STANDALONE
-	if (!com_standalone->integer) {
+	/*if (!com_standalone->integer) {
 		Com_ReadCDKey(BASEGAME);
 		if (fs_gamedirvar->string[0]) {
 			Com_AppendCDKey(fs_gamedirvar->string);
 		}
-	}
+	}*/
 #endif
 
 	// add our commands
@@ -3824,7 +3824,7 @@ static void FS_CheckSPPaks( void )
 				"Please re-install the 1.41 point release.\n\n", missingPaks ) );
 		}
 
-		Com_Error(ERR_FATAL, "%s", errorText);
+		//Com_Error(ERR_FATAL, "%s", errorText);
 	}
 }
 
@@ -3870,7 +3870,7 @@ static void FS_CheckPak0( void )
 		{
 			if( curpack->checksum != pak_checksums[pakBasename[3]-'0'] )
 			{
-				if(pakBasename[3] == '0')
+				/*if(pakBasename[3] == '0')
 				{
 					Com_Printf("\n\n"
 						"**************************************************\n"
@@ -3882,7 +3882,7 @@ static void FS_CheckPak0( void )
 
 					Com_Error(ERR_FATAL, NULL);
 				}
-				/*
+				
 				else
 				{
 					Com_Printf("\n\n"
@@ -3891,14 +3891,14 @@ static void FS_CheckPak0( void )
 							"is not correct. Please re-install the point release\n"
 							"**************************************************\n\n\n",
 							pakBasename[3]-'0', curpack->checksum );
-				}
-				*/
+				}*/
+				
 			}
 
 			foundPak |= 1<<(pakBasename[3]-'0');
 		}
 		else
-		{
+		{/*
 			int index;
 
 			// Finally check whether this pak's checksum is listed because the user tried
@@ -3919,7 +3919,7 @@ static void FS_CheckPak0( void )
 
 					foundPak |= 0x80000000;
 				}
-			}
+			}*/
 		}
 	}
 
@@ -3949,7 +3949,7 @@ static void FS_CheckPak0( void )
 	}
 
 
-	if(!com_standalone->integer && (foundPak & 0x01) != 0x01)
+	/*if(!com_standalone->integer && (foundPak & 0x01) != 0x01)
 	{
 		char errorText[MAX_STRING_CHARS] = "";
 
@@ -3966,7 +3966,7 @@ static void FS_CheckPak0( void )
 				"in the \"%s\" directory is present and readable.\n\n", BASEGAME));
 
 		Com_Error(ERR_FATAL, "%s", errorText);
-	}
+	}*/
 
 	if(!founddemo)
 		FS_CheckSPPaks();
